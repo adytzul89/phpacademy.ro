@@ -1,0 +1,5 @@
+tema contine:
+
+css cu pozitie;
+css cu variabile;
+css cu selectorii;
