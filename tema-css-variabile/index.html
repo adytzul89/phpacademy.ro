@@ -5,25 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tema cu css si variabile</title>
 
-<style>
+    <style>
 
-div.startContent { display:flex }
+    body { background:#f1f1f1; }
 
-.main { 
-    width:75%;
-    position:relative;
+    :root { 
+        --red:#ff0000;
+        --yellow:yellow;
+        --blue:blue;
+        --black:#000000;
+        --gray: #dddddd;
+    }
 
- }
- .aside { 
-    width:25%;
-    background:yellow;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 10px;
-    height:25vh;
- }
+    div.startContent { display:flex }
 
-</style>
+    .main { 
+        width:75%;
+        position:relative;
+        padding-right:25px
+    }
+    .main h2#helloFirst { color:var(--red) }
+    .main h2#helloTwo { color:var(--blue) }
+    .main h2#helloThree { color:var(--yellow); background-color:var(--red) }
+
+    section.two p:first-of-type { 
+        color:var(--yellow); background-color:var(--black) 
+    }
+    section.three p:first-of-type{ color:var(--red) }
+    section.three p:nth-child(3){ 
+        color:var(--yellow); background-color:var(--black)
+    }
+    section.three p:last-of-type{ color:var(--blue) }
+    .aside { 
+        width:25%;
+        background:yellow;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 25px;
+        height:55vh;
+    }
+    .aside h3 { padding:10px }
+    .aside ol li {
+        border-bottom:2px solid #000000; 
+        width:80%;
+        padding-bottom:10px;
+        margin-bottom:10px
+    }
+    .aside ol li:last-child{ border-bottom:none }   
+    .aside ol li a { text-decoration:none }
+    .aside ol li:hover{ margin-left:5px; }
+
+    footer {
+        background-color:var(--gray);
+        padding:10px;
+        font-weight:bold;
+     }
+
+    </style>
 
 </head>
 <body>
@@ -34,30 +72,44 @@ div.startContent { display:flex }
 
 <div class="startContent">
 
-<div class="main">
-    <h2 id="helloFirst" class="primulheadingdoi">Hello de la primul paragraph</h2>
-    <p class="""">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
-    <h3 id="helloTwo">Hello de la al doilea paragraph</h3>
-    <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
-    <h4 id="helloThree">Hello de la al treilea paragraph</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+    <div class="main">
+        <section class="first">
+            <h2 id="helloFirst" class="primulheadingdoi">Hello de la primul paragraph</h2>
+            <p class="""">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
+        </section>
+        <section class="two">
+            <h2 id="helloTwo">Hello de la al doilea paragraph</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
+        </section>
+        <section class="three">
+            <h2 id="helloThree"><marquee>Hello de la al treilea paragraph</marquee></h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+        </section>
+    </div>
+
+    <div class="aside">
+        <h3>Menu cu hello</h3>
+        <ol>
+            <li><a href="#helloFirst">Primul hello</a></li>
+            <li><a href="#helloTwo">Al doilea hello</a></li>
+            <li><a href="#helloThree">Al treilea hello</a></li>
+        </ol>
+
+
+    </div>
+
 </div>
 
-<div class="aside">
-    <p>Menu</p>
+<br/>
 
-    <ol>
-        <li><a href="#helloFirst">Primul hello</a></li>
-        <li><a href="#helloTwo">Al doilea hello</a></li>
-        <li><a href="#helloThree">Al treilea hello</a></li>
-    </ol>
+<footer>
 
-</div>
+    &copy; Copyright 2023 - Adi Pop
 
-</div>
+</footer>
 
 </body>
 </html>
