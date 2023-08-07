@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tema cu css si variabile</title>
+
+<style>
+
+div.startContent { display:flex }
+
+.main { 
+    width:75%;
+    position:relative;
+
+ }
+ .aside { 
+    width:25%;
+    background:yellow;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10px;
+    height:25vh;
+ }
+
+</style>
+
 </head>
 <body>
     
+<h2>Pozitionare cu css</h2>
+
+<hr/>
+
+<div class="startContent">
+
+<div class="main">
+    <h2 id="helloFirst" class="primulheadingdoi">Hello de la primul paragraph</h2>
+    <p class="""">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
+    <h3 id="helloTwo">Hello de la al doilea paragraph</h3>
+    <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti inventore nobis voluptatum porro reprehenderit, voluptates, sunt fuga voluptatibus a nihil laudantium magnam ducimus aspernatur odio facilis unde aliquid impedit quam veritatis, eum aut et? Natus, quas vero. Quam, incidunt maxime necessitatibus architecto facilis illum voluptatum. A voluptas quia quisquam fuga deleniti ab dolorum delectus, reprehenderit esse voluptatum rerum cumque dicta? Commodi maxime nam quas eum? Obcaecati necessitatibus consequatur magni natus quis, quisquam eum quia, ullam nisi eos, amet modi saepe enim! Architecto veniam magni, voluptas laboriosam, nam quisquam velit, quae tempore fuga provident debitis dolores. Numquam nulla sit dolorem doloribus.</p>
+    <h4 id="helloThree">Hello de la al treilea paragraph</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad qui earum ullam repellendus voluptate excepturi nisi voluptates quas, ut, quisquam consequatur quod adipisci delectus. Quisquam assumenda at repellat in aperiam ipsum velit, corporis fuga quas eligendi sequi facere cum accusantium architecto soluta similique cumque eaque excepturi! Modi, ipsa dolorum vitae libero cum repudiandae non sit atque esse asperiores necessitatibus nostrum, expedita laborum voluptate totam omnis velit, est harum accusamus praesentium. Labore error esse adipisci, voluptates exercitationem sint iusto expedita architecto quos quod doloribus blanditiis non natus reprehenderit porro minima cum. Ea molestias maxime voluptate atque! Itaque assumenda, sit fuga asperiores, laboriosam sapiente earum expedita rem distinctio aliquid eos accusamus natus, numquam ipsam iusto soluta libero. Quos corporis animi quis quae eaque tenetur dolorem recusandae?</p>
+</div>
+
+<div class="aside">
+    <p>Menu</p>
+
+    <ol>
+        <li><a href="#helloFirst">Primul hello</a></li>
+        <li><a href="#helloTwo">Al doilea hello</a></li>
+        <li><a href="#helloThree">Al treilea hello</a></li>
+    </ol>
+
+</div>
+
+</div>
+
 </body>
 </html>
