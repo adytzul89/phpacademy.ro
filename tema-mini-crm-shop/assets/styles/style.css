@@ -27,7 +27,8 @@ body.loginCss {
     box-shadow: 5px 10px; }
 
 .login input[type=text], 
-.login input[type=password] { border-radius:10px }
+.login input[type=password],
+.login input[type=email] { border-radius:10px }
 
 .login input[type=submit] {
     background-color:red; 
