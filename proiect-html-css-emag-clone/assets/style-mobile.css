@@ -1,0 +1,119 @@
+@media only screen and (max-width: 600px) {
+    .formular-auth-reg{ width:300px; }
+
+    .ascundeMobil { display:none }
+
+    .header_logo img { width:115px }
+
+    .separatorHeader_top { 
+        height: 3px;
+        /* background: #0082e6;
+        background: -webkit-linear-gradient(left,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6 70%); */
+        background: linear-gradient(to right,#ff1d25 5%,#a0328c 35%,#7040a4 45%,#4359c7 55%,#0082e6 70%);
+    }
+
+    .navbar_top { width:100% }
+    .header_minimenu {
+        position: relative;
+        margin-top: 10px;
+        left: 5px;
+    }
+    .header_logo { 
+        position: relative;
+        left: 10px;
+    }
+    .header_cautare.doarMobil {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .menuSlider { 
+        display:block;
+        width:100%;
+        left:0px
+     }
+    .listMegaMenu {
+        width:100%;
+        padding: 0;
+    }
+    .listMegaMenu ul {
+        padding: 0 10px 0 10px;
+    }
+
+    .boxShortReclama { 
+        display: flex!important;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        flex-direction: row;
+        margin: 0 0 0 10px;
+     }
+     .boxReclama .bgAcoperit { z-index:inherit }
+     
+     .grupProduse {
+        display: flex!important;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        flex-direction: row;
+        margin: 0 0 0 10px;
+     }
+     .boxProdus img {
+        width: 180px;
+        height: 205px;
+     }
+
+     .boxPromo {
+        width: 100%;
+        margin-right: 25px;
+     }
+
+     .startAbonare{
+        width:100%!important;
+        padding:10px;
+     }
+     .formularAbonare {
+        position:unset!important;
+        display: block;
+     }
+     .formularAbonare input {
+        width: 90%;
+        margin-bottom: 15px;
+     }
+     .formularAbonare input[type="submit"] {
+        width: auto;
+        float: right;
+     }
+
+     .footerTop { 
+        display:block;
+        position:unset;
+      }
+    .footerTop .continutText {
+        left:0
+     }
+     .footerTop .descarcaApp {
+        position:unset;
+     }
+     .footerTop div { padding:10px }
+
+     footer .menuFooter {
+        display:block;
+     }
+
+     .sliderPeMob {
+        position: relative;
+        width: auto;
+        height: auto;
+        overflow: auto;
+        scroll-behavior: auto;
+        padding-right: 5px;
+        /* display: flex; */
+        /* align-items: center; */
+        padding-bottom: 25px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .doarMobil { display:none }
+}
