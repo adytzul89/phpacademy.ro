@@ -318,7 +318,7 @@ ul.menuNav li a.megaProduse:hover {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  margin: 0 0 0 40px;
+  /* margin: 0 0 0 40px; */
 }
 .box_unu, .box_doi, .box_trei, .box_patru, .box_cinci, .box_sase, .box_sapte { 
   position:relative;
@@ -368,10 +368,13 @@ ul.menuNav li a.megaProduse:hover {
 
 /* produse promotii */
 .styleDivProduse h2 {
-  margin-left: 40px;
+  /* margin-left: 40px; */
   position: relative;
   font-size: 25px;
   font-weight: 400;
+  width: 1220px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .grupProduse {
@@ -441,11 +444,22 @@ ul.menuNav li a.megaProduse:hover {
 }
 
 .boxPromo { 
-  width:22.5%;
+  width:25%;
  }
  .boxPromo img {
   border-radius:10px;
  }
+ .boxPromo:hover {
+  position: relative;
+ }
+
+ /* noutati */
+
+ .styleNoutati { 
+    width: 1220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
  /* abonare */
  .startAbonare {
