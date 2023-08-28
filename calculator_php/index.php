@@ -25,28 +25,27 @@
 <h2 class="textCenter">Calculator</h2>
 <hr/>
 
-    <form>
+    <form action="" method="get">
 
         <label for="numberX">Introduceti numarul pentru X</label>
         <input type="number" name="numberX" id="numberX" required/>
         <br/><br/>
         <label for="alegeOperator">Alege operator</label>
         <select name="alegeOperator" id="alegeOperator">
-            <option name="plus" value="+">adunare '+'</option>
-            <option name="minus" value="-">scadere '-'</option>
-            <option name="inmultire" value="*">inmultire '*'</option>            
-            <option name="impartire" value="/">impartire '/'</option>
+            <option name="plus" value="+">adunare ' + '</option>
+            <option name="minus" value="-">scadere ' - '</option>
+            <option name="inmultire" value="*">inmultire ' * '</option>            
+            <option name="impartire" value="/">impartire ' / '</option>
         </select>
         <br/><br/>
         <label for="numberY">Introduceti numarul pentru Y</label>
         <input type="number" name="numberY" id="numberY" required/>
         <br/><br/>
+        <input type="reset" name="reset" id="reset" value="Reseteaza"/> 
+        sau
         <input type="submit" name="calculeaza" id="calculeaza" value="Calculeaza"/>
         <br/><br/>
         Rezultatul este: ...
-
-        <br/>
-        <input type="reset" name="reset" id="reset" value="Reseteaza"/>
 
     </form>
 
