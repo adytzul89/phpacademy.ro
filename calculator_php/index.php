@@ -16,6 +16,7 @@
             padding:2rem;
             border-bottom-right-radius: 50px;
         }
+        section.calculator input#rezultat { width:50px }
     </style>
 </head>
 <body>
@@ -25,29 +26,60 @@
 <h2 class="textCenter">Calculator</h2>
 <hr/>
 
-    <form action="" method="get">
+<?php
+if (isset($_POST['submit'])) {
+  // obtine valorile din formular
+  $num1 = $_POST['num1'];
+  $operator = $_POST['operator'];
+  $num2 = $_POST['num2'];
 
-        <label for="numberX">Introduceti numarul pentru X</label>
-        <input type="number" name="numberX" id="numberX" required/>
-        <br/><br/>
-        <label for="alegeOperator">Alege operator</label>
-        <select name="alegeOperator" id="alegeOperator">
-            <option name="plus" value="+">adunare ' + '</option>
-            <option name="minus" value="-">scadere ' - '</option>
-            <option name="inmultire" value="*">inmultire ' * '</option>            
-            <option name="impartire" value="/">impartire ' / '</option>
-        </select>
-        <br/><br/>
-        <label for="numberY">Introduceti numarul pentru Y</label>
-        <input type="number" name="numberY" id="numberY" required/>
-        <br/><br/>
-        <input type="reset" name="reset" id="reset" value="Reseteaza"/> 
+  // verifica operator ales si incepe calul
+  if ($operator == 'add') {
+    $result = $num1 + $num2;
+  } elseif ($operator == 'subtract') {
+    $result = $num1 - $num2;
+  } elseif ($operator == 'multiply') {
+    $result = $num1 * $num2;
+  } elseif ($operator == 'divide') {
+    $result = $num1 / $num2;
+  } elseif ($operator == 'pow') {
+    $result = pow($num1,$num2);
+  }
+  
+} 
+?>
+
+<form action="index.php" method="post">
+    <label for="numar1">Introduceti numarul pentru X</label>  
+    <input type="text" name="num1" id="numar1">
+    <br/><br/>
+    <label for="operator">Alege operator</label>
+    <select name="operator" id="operator">
+        <option value="add">adunare +</option>
+        <option value="subtract"> scadere -</option>
+        <option value="multiply">inmultire *</option>
+        <option value="divide">impartire /</option>
+        <option value="pow">ridicare la putere</option>
+    </select>
+    <br/><br/>
+    <label for="numar2">Introduceti numarul pentru Y</label>
+    <input type="text" name="num2" id="numar2">
+    <br/><br/>
+    <input type="reset" name="reset" value="Reseteaza"/> 
         sau
-        <input type="submit" name="calculeaza" id="calculeaza" value="Calculeaza"/>
-        <br/><br/>
-        Rezultatul este: ...
+    <input type="submit" name="submit" value="Calculeaza">
 
-    </form>
+</form>
+
+<br/><br/>
+    <!-- <div for="rezultat">Rezultatul calcului dintre <?php //echo $num1 '<sup><i>' $operator '</i></sup>' $num2 ?> este: </div> -->
+    <span>
+    <?php
+        if (isset($result)) {
+            echo " Rezultatul calcului dintre x=$num1 utilizand operatorul <sup>$operator</sup> si y=$num2 este <b>$result</b>"; }
+            else { echo 'Alege un numar X urmat de un operator apoi un numar Y si calculeaza'; }
+    ?>
+    </span>
 
 </section>
 
@@ -59,7 +91,3 @@
 
 </body>
 </html>
-
-<?php
-
-?>
