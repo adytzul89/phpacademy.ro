@@ -42,8 +42,10 @@ if (isset($_POST['submit'])) {
     $result = $num1 * $num2;
   } elseif ($operator == 'divide') {
     $result = $num1 / $num2;
-  } elseif ($operator == 'pow') {
-    $result = pow($num1,$num2);
+  } elseif ($operator == 'divide') {
+    $result = $num1 / $num2;
+  } elseif ($operator == 'mod') {
+    $result = $num1 % $num2;
   }
   
 } 
@@ -60,6 +62,7 @@ if (isset($_POST['submit'])) {
         <option value="multiply">inmultire *</option>
         <option value="divide">impartire /</option>
         <option value="pow">ridicare la putere</option>
+        <option value="mod">modulo</option>
     </select>
     <br/><br/>
     <label for="numar2">Introduceti numarul pentru Y</label>
@@ -76,7 +79,7 @@ if (isset($_POST['submit'])) {
     <span>
     <?php
         if (isset($result)) {
-            echo " Rezultatul calcului dintre x=$num1 utilizand operatorul <sup>$operator</sup> si y=$num2 este <b>$result</b>"; }
+            echo "Rezultatul calcului dintre x=$num1 utilizand operatorul <sup>$operator</sup> si y=$num2 este <b>$result</b>"; }
             else { echo 'Alege un numar X urmat de un operator apoi un numar Y si calculeaza'; }
     ?>
     </span>
