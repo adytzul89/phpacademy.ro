@@ -4,71 +4,6 @@ conexiunea la baza de date prin formualar
 html / css / php
 */
 
-/*
-if($_SERVER["REQUEST_METHOD"] == "POST" ){
-
-    //obtinem date din formular
-    $localhost = $_POST["localhost"];
-    $dbName = $_POST["dbName"];
-    $username = $_POST["dbusername"];
-    $password = $_POST["dbpassword"];
-
-    //connectare la mysql
-    $conn = new mysqli($localhost,$username,$password);
-
-    //verificare conexiune
-    if($conn->connect_error){
-        die("Conexiune ratata" . $conn->connect_error);
-    }
-
-    //facem baza de date
-
-     //cream bd apoi tabele 
-
-    $sql = "CREATE DATABASE `$dbName`";
-    
-    executeQuery($conn,$sql, "DB creata cu succes!");
-
-    //selectam baza de date
-    $conn->select_db($dbName);
-
-    //cream tabel - users
-    $sql = "CREATE TABLE users(
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        utilizator VARCHAR(60) NOT NULL,
-        parola VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
-
-    executeQuery($conn,$sql, "Tabel creat cu succes!");
-
-    if($conn->multi_query($sql) === "TRUE"){
-
-        $_SESSION['successMessage'] = 'Baza de date a fost configurata cu succes!';
-        $_SESSION['dbData'] = array (
-            'localhost' => $localhost,
-            'dbName' => $dbName,
-            'username' => $username,
-            'password' => $password
-        );
-        header(header: "Location: index.php");
-        exit();
-    } else {
-        echo "Eroare: ". $conn->error. "<br>";
-    }
-    $conn->close();
-
-} else {
-    echo "Datele din formular nu au fost trimise corect!";
-}
-function executeQuery($conn,$sql,$successMessage){
-    if($conn->multi_query($sql) === TRUE) {
-        echo $successMessage . '<br>';
-    }
-}
-*/
-
-
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     //obtinem datele din forms
@@ -77,11 +12,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $dbName = $_POST["dbName"];
     $username = $_POST["dbusername"];
     $password = $_POST["dbpassword"];
-
-    //verificam daca sunt introduse datele din formular
-        // if (empty($localhost) || empty($dbname) || empty($username)) {
-        //     echo 'Campurile sunt goale.';
-        // } else {
 
         //ne conectam la server mysql
 
@@ -95,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         //creare baza de date --> tabel
 
-        $sql = "CREATE DATABASE `$dbName`";
+        $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
 
         executeQuery($conn,$sql,"Baza de date creata cu success!");
 
@@ -103,25 +33,81 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         $conn->select_db($dbName);
 
-        //creare tabel - users
+        //creare tabel
 
-        $sql = "CREATE TABLE users(
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            utilizator VARCHAR(60) NOT NULL,
-            parola VARCHAR(255) NOT NULL,
+        $sqlcontact = "CREATE TABLE contact(
+            id_contact INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            nume VARCHAR(255) NOT NULL,
+            subiect_contact VARCHAR(255) NOT NULL,
+            email_contact VARCHAR(255) NOT NULL,
+            data_trimitere_contact TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )";
+        executeQuery($conn,$sqlcontact, "Tabelul 'contact' creat cu succes!");
+
+        $sqlstudenti = "CREATE TABLE studenti(
+            id_studenti INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(255) NOT NULL,
+            last_name VARCHAR(255) NOT NULL,
+            passwordStudenti VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
-            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
+            photo VARCHAR(255) NOT NULL,
+            friends VARCHAR(255) NOT NULL,
+            course VARCHAR(255) NOT NULL,
+            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )";
+        executeQuery($conn,$sqlstudenti, "Tabelul 'studenti' creat cu succes!");
 
-        executeQuery($conn,$sql, "Tabelul users creat cu succes!");
+        $sqlplatile = "CREATE TABLE plati(
+            id_plati INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            metoda_plata ENUM('paypal', 'revolut', 'bt') NOT NULL,
+            statusPlata ENUM('in_curs_de_plata', 'platit', 'plata_respinsa', 'plata_acceptata', 'plata_in_curs_de_verificare')NOT NULL
+        )";
+        executeQuery($conn,$sqlplatile, "Tabelul 'plati' creat cu succes!");
 
-        $sqls = "CREATE TABLE userss(
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            utilizator VARCHAR(60) NOT NULL,
-            parola VARCHAR(255) NOT NULL,
-            email VARCHAR(255) NOT NULL,
-            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
+        $sqlsmtp = "CREATE TABLE smtpsetting(
+            ssl_smtp VARCHAR(255) NOT NULL,
+            tls_smtp VARCHAR(255) NOT NULL,
+            server_host VARCHAR(255) NOT NULL,
+            nume_host VARCHAR(255) NOT NULL,
+            parola_host VARCHAR(255) NOT NULL,
+            email_host VARCHAR(255) NOT NULL
+        )";
+        executeQuery($conn,$sqlsmtp, "Tabelul 'SMTP' creat cu succes!");
 
-            executeQuery($conn,$sqls, "Tabelul userss creat cu succes!");
+        $sqlsite = "CREATE TABLE sitesetting(
+            id_site INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            nume_site VARCHAR(255) NOT NULL,
+            limba_site VARCHAR(255) NOT NULL,
+            contact_site VARCHAR(255) NOT NULL
+        )";
+        executeQuery($conn,$sqlsite, "Tabelul 'site setting' creat cu succes!");
+
+        $sqlvdeo = "CREATE TABLE videoclipuri(
+            id_video INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            nume_video VARCHAR(255) NOT NULL,
+            link_video VARCHAR(255) NOT NULL
+        )";
+        executeQuery($conn,$sqlvdeo, "Tabelul 'videoclipuri' creat cu succes!");
+
+        $sqlstaff = "CREATE TABLE staff(
+            id_admin INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            permisiuni ENUM('super_admin','medium_admin','minim_admin') NOT NULL,
+            link_video VARCHAR(255) NOT NULL
+        )";
+        executeQuery($conn,$sqlstaff, "Tabelul 'staff' creat cu succes!");
+
+        $sqlcursuri = "CREATE TABLE cursuri(
+            id_curs INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            nume_curs VARCHAR(255) NOT NULL,
+            pret_curs VARCHAR(255) NOT NULL,
+            descriere_curs VARCHAR(255) NOT NULL,
+            poza_curs VARCHAR(255) NOT NULL,
+            instructor_curs VARCHAR(255) NOT NULL,
+            ora_curs VARCHAR(255) NOT NULL,
+            data_curs VARCHAR(255) NOT NULL,
+            sfarsit_curs VARCHAR(255) NOT NULL
+        )";
+        executeQuery($conn,$sqlcursuri, "Tabelul 'cursuri' creat cu succes!");
 
             if($conn->multi_query($sql) == "TRUE"){
 
@@ -132,16 +118,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     'username' => $username,
                     'password' => $password
                 );
-                //header(header:"Location: index.php");
+                header(header:"Location: index.php");
                 exit();
 
             } 
-            // else {
-            //     echo "UPS: ". $conn->error. "<br>";
-            // }
+            else {
+                echo "UPS: ". $conn->error. "<br>";
+            }
 
             $conn->close();
-    //}
+
 } else {
     echo "Completati campurile!";
 }
