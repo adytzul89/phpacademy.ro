@@ -61,7 +61,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" ){
 } else {
     echo "Datele din formular nu au fost trimise corect!";
 }
-
 function executeQuery($conn,$sql,$successMessage){
     if($conn->multi_query($sql) === TRUE) {
         echo $successMessage . '<br>';
@@ -69,67 +68,82 @@ function executeQuery($conn,$sql,$successMessage){
 }
 */
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     //obtinem datele din forms
 
     $localhost = $_POST["localhost"];
     $dbName = $_POST["dbName"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = $_POST["dbusername"];
+    $password = $_POST["dbpassword"];
 
-    //ne conectam la server mysql
+    //verificam daca sunt introduse datele din formular
+        // if (empty($localhost) || empty($dbname) || empty($username)) {
+        //     echo 'Campurile sunt goale.';
+        // } else {
 
-    $conn = new mysqli($localhost,$username,$password);
-    //verificam conexiunea
+        //ne conectam la server mysql
 
-    if($conn->connect_error){
-        die("Conexiune esuata!" . $conn->connect_error);
-    }
-    //facem baza de date
+        $conn = new mysqli($localhost,$username,$password);
+        //verificam conexiunea
 
-    /*
-     * facem baza de date apoi tabela
-     */
-
-    $sql = "CREATE DATABASE `$dbName`";
-
-    executeQuery($conn,$sql,"Baza de date creata cu success!");
-
-    //selectam baza de date
-
-    $conn->select_db($dbName);
-
-    //creare tabel - users
-
-    $sql = "CREATE TABLE users(
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        utilizator VARCHAR(60) NOT NULL,
-        parola VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
-
-        executeQuery($conn,$sql,"Tabelul creat cu succes!");
-
-        if($conn->multi_query($sql) === "TRUE"){
-
-            $_SESSION['successMessage'] = 'Baza de date configurate cu bine!';
-            $_SESSION['dbData'] = array(
-                'localhost' => $localhost,
-                'dbName' => $dbName,
-                'username' => $username,
-                'password' => $password
-            );
-            header(header:"Location: index.php");
-            exit();
-
-        } else {
-            echo "Eroare: ". $conn->error. "<br>";
+        if ($conn->connect_error){
+            die("Conexiune esuata!" . $conn->connect_error);
         }
-        $conn->close();
+        //facem baza de date
 
+        //creare baza de date --> tabel
+
+        $sql = "CREATE DATABASE `$dbName`";
+
+        executeQuery($conn,$sql,"Baza de date creata cu success!");
+
+        //selectam baza de date
+
+        $conn->select_db($dbName);
+
+        //creare tabel - users
+
+        $sql = "CREATE TABLE users(
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            utilizator VARCHAR(60) NOT NULL,
+            parola VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
+
+        executeQuery($conn,$sql, "Tabelul users creat cu succes!");
+
+        $sqls = "CREATE TABLE userss(
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            utilizator VARCHAR(60) NOT NULL,
+            parola VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
+
+            executeQuery($conn,$sqls, "Tabelul userss creat cu succes!");
+
+            if($conn->multi_query($sql) == "TRUE"){
+
+                $_SESSION['successMessage'] = 'Baza de date configurate cu bine!';
+                $_SESSION['dbData'] = array(
+                    'localhost' => $localhost,
+                    'dbName' => $dbName,
+                    'username' => $username,
+                    'password' => $password
+                );
+                //header(header:"Location: index.php");
+                exit();
+
+            } 
+            // else {
+            //     echo "UPS: ". $conn->error. "<br>";
+            // }
+
+            $conn->close();
+    //}
 } else {
-    echo "Datele din formular nu au fost trimise corect!";
+    echo "Completati campurile!";
 }
 
 function executeQuery($conn,$sql,$successMessage){
@@ -137,7 +151,7 @@ function executeQuery($conn,$sql,$successMessage){
     if($conn->multi_query($sql) === TRUE){
         echo $successMessage . '<br>';
     } else {
-        echo "Eroare: " .$conn->error . '<br>';
+        echo "Eroare: ". $conn->error . '<br>';
     }
 
 }
@@ -179,6 +193,7 @@ function executeQuery($conn,$sql,$successMessage){
                 margin-bottom:5px;
                 font-weight:bold;
             }
+            label address { font-size:12px; color:gray; }
             input[type=text], input[type=password] {
                 width:95%;
                 padding:10px;
@@ -218,10 +233,10 @@ function executeQuery($conn,$sql,$successMessage){
 
             <div class="styleForm">
 
-                <form action="" method="">
+                <form action="" method="POST">
 
-                    <label for="localhost">Localhost</label>
-                    <input type="text" name="localhost" id="localhost"><br>
+                    <label for="localhost">Localhost*<br><address>default is localhost</address></label>
+                    <input type="text" name="localhost" id="localhost" value="localhost"><br>
                     
                     <div class="clear">&nbsp;</div>
 
@@ -230,12 +245,12 @@ function executeQuery($conn,$sql,$successMessage){
                     
                     <div class="clear">&nbsp;</div>
 
-                    <label for="dbusername">DB Username</label>
-                    <input type="text" name="dbusername" id="dbusername"><br>
+                    <label for="dbusername">DB Username*<br><address>default is root</address></label>
+                    <input type="text" name="dbusername" id="dbusername" value="root"><br>
 
                     <div class="clear">&nbsp;</div>
 
-                    <label for="dbpassword">Password</label>
+                    <label for="dbpassword">Password*<br><address>default is blank</address></label>
                     <input type="text" name="dbpassword" id="dbpassword"><br>
 
                     <div class="clear">&nbsp;</div>
