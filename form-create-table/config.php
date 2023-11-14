@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         //creare baza de date --> tabel
 
-        $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
+        $sql = "CREATE DATABASE $dbName";
 
         executeQuery($conn,$sql,"Baza de date creata cu success!");
 
@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     'username' => $username,
                     'password' => $password
                 );
-                header(header:"Location: index.php");
+                //header(header:"Location: index.php");
                 exit();
 
             } 
