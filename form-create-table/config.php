@@ -25,9 +25,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         //creare baza de date --> tabel
 
-        $sql = "CREATE DATABASE $dbName";
+        $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
 
-        executeQuery($conn,$sql,"Baza de date creata cu success!");
+        executeQuery($conn,$sql,"Baza de date numita '$dbName' creata cu success!<br>");
 
         //selectam baza de date
 
@@ -109,9 +109,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         )";
         executeQuery($conn,$sqlcursuri, "Tabelul 'cursuri' creat cu succes!");
 
+        try{
             if($conn->multi_query($sql) == "TRUE"){
 
-                $_SESSION['successMessage'] = 'Baza de date configurate cu bine!';
+                echo '<br>---<br>';
+                $_SESSION['successMessage'] = 'Baza de date si tabelele au fost inregistrare cu success!';
                 $_SESSION['dbData'] = array(
                     'localhost' => $localhost,
                     'dbName' => $dbName,
@@ -119,10 +121,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     'password' => $password
                 );
                 //header(header:"Location: index.php");
-                exit();
+                echo $_SESSION['successMessage'];
+                //exit();
 
-            } 
-            else {
+            }
+        } catch (Exception $exception) {
                 echo "UPS: ". $conn->error. "<br>";
             }
 
@@ -133,13 +136,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 }
 
 function executeQuery($conn,$sql,$successMessage){
-
-    if($conn->multi_query($sql) === TRUE){
-        echo $successMessage . '<br>';
-    } else {
-        echo "Eroare: ". $conn->error . '<br>';
+    try{
+        if($conn->multi_query($sql) === TRUE){
+            echo $successMessage . '<br>';
     }
-
+    } catch(Exception $eroare) {
+            echo "Eroare: ". $conn->error . '<br>';
+    }
 }
 
 ?>
