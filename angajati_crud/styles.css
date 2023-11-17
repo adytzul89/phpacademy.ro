@@ -1,0 +1,63 @@
+/* importam font google */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap');
+
+/* definim font-urile */
+.nunito { font-family: 'Nunito Sans', sans-serif; }
+.roboto { font-family: 'Roboto', sans-serif; }
+.opensans { font-family: 'Open Sans', sans-serif; }
+
+h1,h2,h3,h4,h5,h6 { font-family: 'Roboto', sans-serif; }
+p { font-family: 'Open Sans', sans-serif; }
+.fontBold { font-weight:bold; }
+
+body { 
+    background-color:#f1f1f1;
+ }
+
+/* clase generale */
+.textCenter { text-align:center; }
+
+/* stilizare nav menu */
+section.menu { 
+    display: flex;
+    justify-content: center; 
+    margin-bottom:1rem;
+    padding:10px;
+    height:100px;
+}
+nav ul li { 
+    display:inline;
+    margin-right:15px;
+}
+nav ul li a {
+    text-decoration:none;
+    padding:10px;
+    background-color:#373737;
+    border-radius:10px;
+    color:#f1f1f1;
+}
+nav ul li a:hover { 
+    background-color:#545454;
+ }
+
+ nav ul li a.pagina-curenta { background-color:#ffc107; color:#000000 }
+
+/* stilizare content */
+.content {
+    max-width:65%;
+    background-color:#ffffff;
+    padding:15px 25px 15px 25px;
+    margin:auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.firstLetter { color:#ff0000; }
+.sepMute { color:#ccc }
+
+label { font-family: 'Open Sans', sans-serif; font-size:15px }
+
+/* footer */
+footer {
+    position:relative;
+    top:100px;
+}
