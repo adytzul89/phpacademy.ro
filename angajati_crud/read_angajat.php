@@ -9,6 +9,14 @@
 
     <link rel="stylesheet" href="styles.css">
 
+    <style>
+        /* stilizare tabel angajati */
+        table { border:2px solid #f1f1f1; }
+        th, td { 
+            border:1px solid #cccccc;
+            padding:10px }
+    </style>
+    
 </head>
 <body>
     
@@ -37,7 +45,40 @@
         
         <div>
 
-            <h4> In curs... </h4>
+            <table class="tg">
+                <thead>
+                <tr>
+                    <th class="">ID</th>
+                    <th class="">Nume / Prenume</th>
+                    <th class="">Telefon</th>
+                    <th class="">Email</th>
+                    <th class="">CNP</th>
+                    <th class="">Data angajare</th>
+                    <th class="">reg</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="">1</td>
+                    <td class="">Adi AP</td>
+                    <td class="">0723111111</td>
+                    <td class="">adytzul89@gmail.com</td>
+                    <td class="">1890000000000</td>
+                    <td class="">2023-11-24</td>
+                    <td class="">2023-11-25 23:11:59</td>
+
+                </tr>
+                <tr>
+                <td class="">2</td>
+                    <td class="">Dorel Mare</td>
+                    <td class="">0723222222</td>
+                    <td class="">dorel.mare@mail.com</td>
+                    <td class="">1790000000000</td>
+                    <td class="">2023-09-21</td>
+                    <td class="">2023-09-22 23:11:59</td>
+                </tr>
+                </tbody>
+            </table>
 
         </div>
 

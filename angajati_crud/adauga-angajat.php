@@ -77,7 +77,7 @@
         
         <div class="styleForm">
 
-            <form action="" method="POST">
+            <form action="adauga-angajat.php" method="POST">
 
                 <label for="fnameAngajat">Nume angajat</label>
                 <input type="text" name="fnameAngajat" id="fnameAngajat" required><br>
@@ -101,17 +101,40 @@
                 <div class="clear">&nbsp;</div>
 
                 <label for="dataStartAngajat">Data Start Angajat</label>
-                <input type="date" name="dataStartAngajat" id="dataStartAngajat" min="2023-01-01" max="2023-12-31" value="2023-01-01"><br>
+                <input type="date" name="dataStartAngajat" id="dataStartAngajat" pattern="\d{4}-\d{2}-\d{2}" min="2023-01-01" max="2023-12-31" value="2023-01-01"><br>
 
                 <div class="clear">&nbsp;</div>
 
-                <input type="submit" value="CONNECT">
+                <input type="submit" name="trimiteDatele" value="ADAUGA">
 
             </form>
 
         </div>
 
 <div style="background:black; color:#00f700; padding:10px">        
+
+<?php
+
+    if(isset($_POST['trimiteDatele'])){
+        $fnameAngj = $_POST['fnameAngajat'];
+        $lnameAngj = $_POST['lnameAngajat'];
+        $phoneAngj = $_POST['phoneAngajat'];
+        $emailAngj = $_POST['emailAngajat'];
+        $cnpAngj = $_POST['cnpAngajat'];
+        $startAngj = $_POST['dataStartAngajat'];
+
+        // includem config pentru conexiune la db
+        include_once ("config.php");
+
+        // adaugam datele din formular in db
+        $result = mysqli_query($conn, "INSERT INTO angajati(nume_angajat,prenume_angajat,telefon_angajat,email_angajat,cnp_angajat,data_start_angajat) VALUES ('$fnameAngj','$lnameAngj','$phoneAngj','$emailAngj','$cnpAngj','$startAngj')");
+        
+        // confirmare pentru adaugare cu success
+        echo "Angajat adaugat cu success.";
+
+    }
+    else { echo "<i>Completeaza formularul pentru a inregistra un aganjat!</i>"; }
+    ?>
 
 </div>
 
