@@ -84,6 +84,7 @@ $result = mysqli_query($conn,"SELECT * FROM angajati ORDER BY id_angajat ASC");
                         echo "<td>".$user_data['data_start_angajat']."</td>";
                         echo "<td>".$user_data['reg_angajat']."</td>";
                         echo "<td><a href='edit.php?id=$user_data[id_angajat]'>Edit</a> | <a href='delete.php?id=$user_data[id_angajat]'>Delete</a>";
+                        //DE ADAUGAT: coloana cu vechime, calcul cu vechime
                     }
                 ?>
 
