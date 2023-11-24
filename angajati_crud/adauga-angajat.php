@@ -47,6 +47,8 @@
             background-color:#007bff;
             opacity: 1;
         }
+
+        .txtWhite { color:#fff }
     </style>
 
 </head>
@@ -101,7 +103,7 @@
                 <div class="clear">&nbsp;</div>
 
                 <label for="dataStartAngajat">Data Start Angajat</label>
-                <input type="date" name="dataStartAngajat" id="dataStartAngajat" pattern="\d{4}-\d{2}-\d{2}" min="2023-01-01" max="2023-12-31" value="2023-01-01"><br>
+                <input type="date" name="dataStartAngajat" id="dataStartAngajat" min="2023-01-01" max="2023-12-31" value="2023-01-01"><br>
 
                 <div class="clear">&nbsp;</div>
 
@@ -127,10 +129,14 @@
         include_once ("config.php");
 
         // adaugam datele din formular in db
-        $result = mysqli_query($conn, "INSERT INTO angajati(nume_angajat,prenume_angajat,telefon_angajat,email_angajat,cnp_angajat,data_start_angajat) VALUES ('$fnameAngj','$lnameAngj','$phoneAngj','$emailAngj','$cnpAngj','$startAngj')");
+        $result = mysqli_query($conn, "INSERT INTO 
+        angajati(
+            nume_angajat,prenume_angajat,telefon_angajat,email_angajat,cnp_angajat,data_start_angajat) 
+        VALUES (
+            '$fnameAngj','$lnameAngj','$phoneAngj','$emailAngj','$cnpAngj','$startAngj')");
         
         // confirmare pentru adaugare cu success
-        echo "Angajat adaugat cu success.";
+        echo 'Angajat adaugat cu success. Vezi tabel cu angajatii, click <a class="txtWhite" href="read_angajat.php">aici</a>';
 
     }
     else { echo "<i>Completeaza formularul pentru a inregistra un aganjat!</i>"; }

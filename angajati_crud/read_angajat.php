@@ -1,3 +1,13 @@
+<?php 
+
+// facem conexiunea la db
+include_once ("config.php");
+
+//selectam datele din tabela angajati pentru a afisa mai jos in tabel
+$result = mysqli_query($conn,"SELECT * FROM angajati ORDER BY id_angajat ASC");
+
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -45,7 +55,7 @@
         
         <div>
 
-            <table class="tg">
+            <table class="tg" style="width:100%">
                 <thead>
                 <tr>
                     <th class="">ID</th>
@@ -55,10 +65,29 @@
                     <th class="">CNP</th>
                     <th class="">Data angajare</th>
                     <th class="">reg</th>
+                    <th class="">Modifica</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+
+                <?php
+                    while ($user_data = mysqli_fetch_array($result)){
+
+                        //preluam datele din db si le afisam in tabel
+
+                        echo "<tr>";
+                        echo "<td>".$user_data['id_angajat']."</td>";
+                        echo "<td>".$user_data['nume_angajat'].' '.$user_data['prenume_angajat']."</td>";
+                        echo "<td>".$user_data['telefon_angajat']."</td>";
+                        echo "<td>".$user_data['email_angajat']."</td>";
+                        echo "<td>".$user_data['cnp_angajat']."</td>";
+                        echo "<td>".$user_data['data_start_angajat']."</td>";
+                        echo "<td>".$user_data['reg_angajat']."</td>";
+                        echo "<td><a href='edit.php?id=$user_data[id_angajat]'>Edit</a> | <a href='delete.php?id=$user_data[id_angajat]'>Delete</a>";
+                    }
+                ?>
+
+                <!-- <tr>
                     <td class="">1</td>
                     <td class="">Adi AP</td>
                     <td class="">0723111111</td>
@@ -76,7 +105,7 @@
                     <td class="">1790000000000</td>
                     <td class="">2023-09-21</td>
                     <td class="">2023-09-22 23:11:59</td>
-                </tr>
+                </tr> -->
                 </tbody>
             </table>
 
